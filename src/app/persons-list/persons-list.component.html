@@ -1,0 +1,75 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>                                 
+    <a class="navbar-brand" href="">RegistrationApp</a>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="register">Register</a>
+        </li>   
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2"  id="FullName" name="FullName" [(ngModel)]="Name" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" (click)="Search()"type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+<div class="container mt-5">
+    <table class="table table-striped">
+      <thead>
+          <tr>
+            
+            <th>FullName</th>
+           <!-- <th>FatherName</th>
+           <th>MotherName</th>  -->
+           <th>DateOfBirth</th>
+           <th>AadharNumber</th>
+           <th>Email</th>
+           <th>MobileNumber</th>
+           <!-- <th>Gender</th>
+           <th>Stream</th>
+           <th>PreviousClass</th>
+          <th>Hobbies</th>  -->
+          <th>AccountNumber</th>
+          <!-- <th>Religion</th> 
+          <th>Category</th> -->
+          </tr>
+          <tr>
+            <th></th>
+          </tr>
+      </thead>
+      <tbody>
+       
+        <tr *ngFor="let person of list">
+          <td>{{ person.fullName}}</td>
+          <!-- <td>{{ person.FatherName }}</td>
+           <td>{{person.MotherName}}</td>  -->
+          <td>{{person.dateOfBirth|date:'dd-MM-yyyy'}}</td>
+          <td>{{person.aadharNumber}}</td>
+          <td>{{person.email}}</td>
+          <td>{{person.mobileNumber}}</td>
+           <!-- <td>{{person.gender}}</td>
+          <td>{{person.stream}}</td>
+          <td>{{person.previousClass}}</td>
+          <td>{{person.hobbies}}</td> -->
+          <td>{{person.accountNumber}}</td>
+          <!-- <td>{{person.religion}}</td>
+          <td>{{person.category}}</td>  -->
+          <!-- <td> <button type="button" class="btn btn-danger" (click)="deletePerson(person.id)">Delete</button></td> -->
+          <!-- <td> <button type="button" class="btn btn-primary" (click)="editPerson(person.id)">Edit</button></td>  -->
+          <td> <button type="button" class="btn btn-primary"  (click)="Edit(person)">Edit</button></td> 
+          <td> <button type="button" (click)="delete(person.id)" class="btn btn-danger">Delete</button></td> 
+        </tr>
+         
+        <!-- </td>
+        <td><a [routerlink]="('update/:id',user.id)"></a></td>
+        </tr>-->
+        
+      </tbody>
+    </table>
+    </div>
+  
+   

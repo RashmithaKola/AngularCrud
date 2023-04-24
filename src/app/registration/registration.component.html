@@ -1,0 +1,172 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>                                 
+    <a class="navbar-brand" href="">RegistrationApp</a>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="register">Register</a>
+        </li>  
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="list">List</a>
+        </li>  
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="text">
+  <br>
+  <h2>Registration</h2>
+  <br>
+  <br>
+  <div class="container">
+    <h5>Personal details</h5>
+    <br>
+    <br>
+    <form  (ngSubmit)="onFormSubmit(register)"#register="ngForm">
+      <div class="row">
+        <div class="row">
+          <div class="col">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" class="form-control" #FullName="ngModel" name="FullName"
+              placeholder="Enter your Name" [(ngModel)]="person.FullName" required>
+            <span *ngIf="FullName.invalid && FullName.touched" style="color:red;"> name is required</span>
+          </div>
+          <div class="col">
+            <label for="name">Father Name</label>
+            <input type="text" id="fathername" class="form-control" #FatherName="ngModel" name="FatherName"
+              placeholder="Enter Fathername" [(ngModel)]="person.FatherName" required>
+            <span *ngIf="FatherName.invalid && FatherName.touched" style="color:red;"> FatherName is required</span>
+          </div>
+          <div class="col">
+            <label for="name">Mother Name</label>
+            <input type="text" id="mothername" class="form-control" #MotherName="ngModel" name="MotherName"
+              placeholder="Enter MotherName" [(ngModel)]="person.MotherName" required>
+            <span *ngIf="MotherName.invalid && MotherName .touched" style="color:red;"> MotherName is required</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label for="name">Date of Birth</label>
+            <input type="date" id="birthdate" #DateOfBirth="ngModel" class="form-control"
+              name="DateOfBirth" placeholder=" Enter Birthdate" [(ngModel)]="person.DateOfBirth" required>
+            <span *ngIf="DateOfBirth.invalid && DateOfBirth.touched" style="color:red;"> DateofBirth is required</span>
+          </div>
+          <div class="col">
+            <label for="name">Aadhar Number</label>
+            <input type="number" maxlength="12"  pattern='^\+?\d{0,12}' id="aadharnumber" #AadharNumber="ngModel" class="form-control"
+               name="AadharNumber" placeholder=" Enter AadharNumber"
+              [(ngModel)]="person.AadharNumber" required>
+              <div class="error" *ngIf="AadharNumber.invalid && (AadharNumber.dirty || AadharNumber.touched)">
+                <div *ngIf="AadharNumber.errors?.['required']"> Mobile Number is required</div>
+             <div *ngIf="AadharNumber.errors?.['pattern']">Invalid MobileNumber</div>
+            </div>
+          </div>
+          <div class="col">
+            <label for="Email">Email</label>
+            <input type="email"  pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$" 
+            id="email" class="form-control" #Email="ngModel"
+               name="Email" placeholder="Enter Email"
+              [(ngModel)]="person.Email" required>
+              <div class="error" *ngIf="Email.invalid && (Email.dirty || Email.touched)"></div>
+              <div *ngIf="Email.errors?.['required']"></div>
+              <div *ngIf="Email.errors?.['pattern']" style="color:red">Invalid Email</div></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label for="name">Mobile Number</label>
+            <input type="number" maxlength="10" pattern='^\+?\d{0,10}' id="mobilenumber" #MobileNumber="ngModel" class="form-control" name="MobileNumber"
+              Placeholder="Enter MobileNumber" [(ngModel)]="person.MobileNumber" required>
+              <div class="error" *ngIf="MobileNumber.invalid && (MobileNumber.dirty || MobileNumber.touched)">
+                 <div *ngIf="MobileNumber.errors?.['required']" style="color:red"> Mobile Number is required</div>
+              <div *ngIf="MobileNumber.errors?.['pattern']">Phone number patterns is required</div>
+            </div>
+          </div>
+          <div class="col" style="margin-top: 27px;">
+
+            <input type="radio" value="male" name="Gender" [(ngModel)]="person.Gender"> Male
+            <input type="radio" value="female" name="Gender" [(ngModel)]="person.Gender"> Female
+
+
+            <!-- <label for="name">Gender</label>
+             <input type="text" id="gender" class="form-control" style="margin-left: 25px;padding-left: 20px;" name="Gender" Placeholder="Enter Gender" [(ngModel)]="person.Gender"> -->
+
+
+          </div>
+          <div class="col">
+            <label for="name">Address</label>
+            <textarea class="form-control" id="exampleTextarea" name="Address" rows="2" id="address"
+              Placeholder="Enter Address" [(ngModel)]="person.Address" required #Address="ngModel"></textarea>
+            <!-- <input type="textarea"  
+                style="margin-left: 40px;padding-left: 20px;" > -->
+            <span *ngIf="Address.invalid && Address .touched" style="color:red;"> Address is required</span>
+          </div>
+        </div>
+        <br>
+        <br><br>
+        <br>
+        <hr>
+        <br>
+        <h4>Other Details</h4>
+        <div class="row">
+          <div class="col">
+            <label for="name">Stream</label>
+            <input type="text" id="stream" class="form-control" #Stream="ngModel" Placeholder="Enter stream"
+              name="Stream" [(ngModel)]="person.Stream" required>
+            <span *ngIf="Stream.invalid && Stream .touched" style="color:red;"> Stream is required</span>
+          </div>
+          <div class="col">
+            <label for="name">Prevoius Class</label>
+            <input type="text" id="prevoiusclass" class="form-control" #PreviousClass="ngModel"
+              Placeholder="Enter prevoiusclass" name="PreviousClass" [(ngModel)]="person.PreviousClass" required>
+            <span *ngIf="PreviousClass.invalid && PreviousClass .touched" style="color:red;"> PreviousClass is
+              required</span>
+          </div>
+          <div class="col">
+            <label for="name">Hobbies</label>
+            <input type="text" id="hobbies" class="form-control" #Hobbies="ngModel" Placeholder="Enter Hobbies"
+              name="Hobbies" [(ngModel)]="person.Hobbies" required>
+            <span *ngIf="Hobbies.invalid && Hobbies .touched" style="color:red;"> name is required</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label for="name">Account Number</label>
+            <input type="number" pattern='^\+?\d{0,12}' id="accountnumber" class="form-control" #AccountNumber="ngModel"
+              Placeholder="Enter AccountNumber" name="AccountNumber" maxlength="12" [(ngModel)]="person.AccountNumber" required>
+              <div class="error" *ngIf="AccountNumber.invalid && (AccountNumber.dirty || AccountNumber.touched)">
+                <div *ngIf="AccountNumber.errors?.['required']"> Account Number is required</div>
+             <div *ngIf="AccountNumber.errors?.['pattern']">Account number patterns is required</div>
+           </div>
+          </div>
+          <div class="col">
+            <label for="name"> Religion</label>
+
+            <select id="religion" class="form-select" name="Religion" [(ngModel)]="selected" required>
+              <option *ngFor="let item of dropdownList;let i = index" value="{{item.code}}" [selected]="i == 4">
+                {{item.Religion}}
+              </option>
+            </select>
+            <!-- <input type="text" id="religion" class="form-control" Placeholder="Enter Religion" name="Religion"  [(ngModel)]="person.Religion"> -->
+          </div>
+          <div class="col">
+            <label for="name">Category</label>
+            <input type="text" id="category" #Category="ngModel" class="form-control" Placeholder="Enter category"
+              name="Category" [(ngModel)]="person.Category" required>
+            <span *ngIf="Category.invalid && Category .touched" style="color:red;"> Category is required</span>
+          </div>
+        
+      </div>
+      <div class="mt-5">
+        <div class="form-group">
+          <button style="margin-left: 50px;" class="btn btn-primary"  type="sumbit">Submit</button>
+          <!-- <button type="submit" value="Update" (click)="Update(person)" class="btn btn-success">Update</button> -->
+        </div>
+      </div>
+    </form>
+    <!-- <button type="Submit" class="btn btn primary" >Submit</button> -->
+  </div>
+</div>

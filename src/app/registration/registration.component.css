@@ -1,0 +1,18 @@
+.text{
+    background-color: whitesmoke;
+}
+.container{
+    background-color: white;
+}
+    .form-group{
+        padding-left: 70px;
+    }
+    .form-control{
+        width:70%;
+    }
+    input.ng-invalid.ng-touched{
+        border:red 1px solid;
+    }
+    .form-select{
+        width: 70%;
+    }
